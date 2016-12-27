@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="M0s-QC-zke" customClass="HeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="杂雾无尘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npe-LH-xN6">
+                    <rect key="frame" x="146.5" y="54" width="82" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="bDO-Xo-RqM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS开发工程师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIz-5U-pO5">
+                    <rect key="frame" x="140" y="90" width="94.5" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.52455447498380836" green="0.53007610103626945" blue="0.53007610103626945" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写了88888字，获得6666个喜欢" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSh-kX-53n">
+                    <rect key="frame" x="84" y="122" width="208" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.52455447498380836" green="0.53007610103626945" blue="0.53007610103626945" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gSh-kX-53n" firstAttribute="top" secondItem="WIz-5U-pO5" secondAttribute="bottom" constant="15" id="0PH-cV-l4z"/>
+                <constraint firstItem="gSh-kX-53n" firstAttribute="centerX" secondItem="npe-LH-xN6" secondAttribute="centerX" id="8eY-bv-m53"/>
+                <constraint firstItem="npe-LH-xN6" firstAttribute="top" secondItem="M0s-QC-zke" secondAttribute="top" constant="54" id="PgW-jd-CLw"/>
+                <constraint firstItem="WIz-5U-pO5" firstAttribute="centerX" secondItem="npe-LH-xN6" secondAttribute="centerX" id="W1a-de-vDw"/>
+                <constraint firstItem="WIz-5U-pO5" firstAttribute="top" secondItem="npe-LH-xN6" secondAttribute="bottom" constant="15" id="Zio-VJ-WZa"/>
+                <constraint firstItem="npe-LH-xN6" firstAttribute="centerX" secondItem="M0s-QC-zke" secondAttribute="centerX" id="naV-3D-CKC"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="217" y="-737"/>
+        </view>
+    </objects>
+</document>
