@@ -147,7 +147,6 @@
     return tableView;
 }
 
-
 #pragma mark - UITableViewDelegate && UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 44;
@@ -186,7 +185,7 @@
         // 如果滑动没有超过150
         if (contentOffsetY < 150) {
             
-            // 让这三个tableView的便宜量相等
+            // 让这三个tableView的偏移量相等
             self.leftTableView.contentOffset = self.centerTableView.contentOffset = self.rightTableView.contentOffset = scrollView.contentOffset;
             
             // 改变headerView的y值
