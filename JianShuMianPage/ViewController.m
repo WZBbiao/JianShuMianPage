@@ -142,7 +142,7 @@
     
     // 创建一个假的headerView，高度等于headerView的高度
     UIView *headerView = [[UIView alloc] initWithFrame:(CGRect){0, 0, WZBScreenWidth, 194}];
-    
+
     tableView.tableHeaderView = headerView;
     return tableView;
 }
@@ -231,7 +231,6 @@
 // 开始拖拽
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if (scrollView == self.scrollView) {
-        self.headerView.hidden = NO;
         
         // 刷新最大OffsetY
         [self reloadMaxOffsetY];
