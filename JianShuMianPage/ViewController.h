@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@end
+
+@interface CustomHeaderView : UIView
 
 @end
 

@@ -64,7 +64,6 @@
     
     // 创建headerView
     HeaderView *header = [HeaderView headerView:(CGRect){0, 0, WZBScreenWidth, 150}];
-    
     // 创建segmentedControl
     WZBSegmentedControl *sectionView = [WZBSegmentedControl segmentWithFrame:(CGRect){0, 150, WZBScreenWidth, 44} titles:@[@"动态", @"文章", @"更多"] tClick:^(NSInteger index) {
         
@@ -100,7 +99,7 @@
     sectionView.backgroundView.frame = frame;
     
     // headerView
-    UIView *headerView = [[UIView alloc] initWithFrame:(CGRect){0, 0, WZBScreenWidth, CGRectGetMaxY(sectionView.frame)}];
+    UIView *headerView = [[CustomHeaderView alloc] initWithFrame:(CGRect){0, 0, WZBScreenWidth, CGRectGetMaxY(sectionView.frame)}];
     headerView.backgroundColor = [UIColor colorWithWhite:0.998 alpha:1];
     [headerView addSubview:header];
     [headerView addSubview:sectionView];
@@ -142,7 +141,7 @@
     
     // 创建一个假的headerView，高度等于headerView的高度
     UIView *headerView = [[UIView alloc] initWithFrame:(CGRect){0, 0, WZBScreenWidth, 194}];
-
+//    headerView.backgroundColor = [UIColor redColor];
     tableView.tableHeaderView = headerView;
     return tableView;
 }
@@ -256,4 +255,15 @@
         }
     }
 }
+@end
+
+@implementation CustomHeaderView
+
+// 禁掉手势
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    UIView *view = [super hitTest:point withEvent:event];
+    if ([view isKindOfClass:UIButton.class]) return view;
+    return nil;
+}
+
 @end
