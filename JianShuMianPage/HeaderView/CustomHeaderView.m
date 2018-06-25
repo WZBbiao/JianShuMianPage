@@ -60,11 +60,19 @@
     self.frame = frame;
 }
 
-// 禁掉手势
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    UIView *view = [super hitTest:point withEvent:event];
-    if ([view isKindOfClass:UIButton.class]) return view;
-    return nil;
+- (void)changeX:(CGFloat)x
+{
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
 }
+
+// 禁掉手势
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    NSLog(@"%d --- %@", event.type, NSStringFromCGPoint(point));
+//    UIView *view = [super hitTest:point withEvent:event];
+//    if ([view isKindOfClass:UIButton.class]) return view;
+//    return nil;
+//}
 
 @end

@@ -11,3 +11,8 @@
 @interface ViewController : UIViewController
 
 @end
+
+
+@interface WZBScrollView : UIScrollView
+
+@end

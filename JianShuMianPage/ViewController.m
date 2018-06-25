@@ -22,7 +22,7 @@
 @property (nonatomic, strong) CustomHeaderView *headerView;
 
 // 底部横向滑动的scrollView，上边放着三个tableView
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) WZBScrollView *scrollView;
 
 // 头部头像
 @property (nonatomic, strong) AvatarView *avatarView;
@@ -37,7 +37,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
     // 底部横向滑动的scrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    WZBScrollView *scrollView = [[WZBScrollView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:scrollView];
     scrollView.backgroundColor = [UIColor colorWithWhite:0.998 alpha:1];
     // 绑定代理
@@ -46,6 +46,12 @@
     scrollView.contentSize = CGSizeMake(3 * WZBScreenWidth, 0);
     scrollView.pagingEnabled = YES;
     self.scrollView = scrollView;
+    
+    // 创建控制器
+    CGFloat width = self.view.frame.size.width;
+    [self setupChildVc:DynamicViewController.class x:0];
+    [self setupChildVc:ArticleViewController.class x:width];
+    [self setupChildVc:MoreViewController.class x:width * 2];
     
     // headerView
     CustomHeaderView *headerView = [[CustomHeaderView alloc] initWithFrame:(CGRect){0, 0, WZBScreenWidth, 194}];
@@ -57,13 +63,7 @@
         [self reloadMaxOffsetY];
     };
     self.headerView = headerView;
-    [self.view addSubview:headerView];
-    
-    // 创建控制器
-    CGFloat width = self.view.frame.size.width;
-    [self setupChildVc:DynamicViewController.class x:0];
-    [self setupChildVc:ArticleViewController.class x:width];
-    [self setupChildVc:MoreViewController.class x:width * 2];
+    [scrollView addSubview:headerView];
     
     // 加载头部头像
     AvatarView *avatarView = [[AvatarView alloc] initWithFrame:(CGRect){0, 0, 35, 35}];
@@ -130,6 +130,7 @@
     if (scrollView == self.scrollView) {
         // 改变segmentdControl
         [self.headerView.sectionView setContentOffset:(CGPoint){scrollView.contentOffset.x / 3, 0}];
+        [self.headerView changeX:scrollView.contentOffset.x];
     }
 }
 
@@ -176,4 +177,24 @@
         [[self.childViewControllers valueForKeyPath:@"tableView"] makeObjectsPerformSelector:@selector(setMj_header:) withObject:nil];
     }
 }
+@end
+
+@implementation WZBScrollView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.delaysContentTouches = NO;
+    }
+    
+    return self;
+}
+
+- (BOOL)touchesShouldCancelInContentView:(UIView *)view {
+    if ([view isKindOfClass:UIButton.class]) {
+        return YES;
+    }
+    
+    return [super touchesShouldCancelInContentView:view];
+}
+
 @end

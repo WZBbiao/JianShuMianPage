@@ -23,8 +23,9 @@
 @property (nonatomic, strong) WZBSegmentedControl *sectionView;
 
 /**
- 修改y值
+ 修改frame值
  */
 - (void)changeY:(CGFloat)y;
+- (void)changeX:(CGFloat)x;
 
 @end
