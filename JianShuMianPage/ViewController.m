@@ -27,6 +27,8 @@
 // 头部头像
 @property (nonatomic, strong) AvatarView *avatarView;
 @property (nonatomic, strong) UISwitch *refreshSwitch;
+// 记录当前选中的控制器
+@property (nonatomic, assign) NSInteger selectedIndex;
 
 @end
 
@@ -56,6 +58,9 @@
     // headerView
     CustomHeaderView *headerView = [[CustomHeaderView alloc] initWithFrame:(CGRect){0, 0, WZBScreenWidth, 194}];
     headerView.segmentSelected = ^(NSInteger index) {
+        // 切换的时候记录一下当前选中的控制器
+        self.selectedIndex = index;
+        
         // 改变scrollView的contentOffset
         self.scrollView.contentOffset = CGPointMake(index * WZBScreenWidth, 0);
         
@@ -85,10 +90,12 @@
     [self addChildViewController:vc];
     // 监听tableView的contentOffset变化
     [vc.tableView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionInitial context:nil];
+    vc.tableView.tag = (int)(x / self.view.frame.size.width);
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
+    if (self.selectedIndex != [object tag]) return;
     if ([keyPath isEqualToString:@"contentOffset"]) {
         UITableView *tableView = object;
         CGFloat contentOffsetY = tableView.contentOffset.y;
@@ -132,6 +139,19 @@
         [self.headerView.sectionView setContentOffset:(CGPoint){scrollView.contentOffset.x / 3, 0}];
         [self.headerView changeX:scrollView.contentOffset.x];
     }
+}
+
+// 滚动停止的时候记录一下当前选中的控制器
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger index = scrollView.contentOffset.x / self.view.frame.size.width;
+    self.selectedIndex = index;
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    NSInteger index = scrollView.contentOffset.x / self.view.frame.size.width;
+    self.selectedIndex = index;
 }
 
 // 开始拖拽
