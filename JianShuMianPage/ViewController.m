@@ -34,6 +34,15 @@
 
 @implementation ViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 防止头像在pop回来被裁减掉
+        self.avatarView.superview.superview.clipsToBounds = NO;
+    });
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -205,7 +214,6 @@
     if (self = [super initWithFrame:frame]) {
         self.delaysContentTouches = NO;
     }
-    
     return self;
 }
 
@@ -213,7 +221,6 @@
     if ([view isKindOfClass:UIButton.class]) {
         return YES;
     }
-    
     return [super touchesShouldCancelInContentView:view];
 }
 

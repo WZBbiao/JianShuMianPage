@@ -50,6 +50,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *vc = [UIViewController new];
+    vc.view.backgroundColor = [UIColor redColor];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (void)dealloc
 {
     NSLog(@"%@--dealloc", NSStringFromClass(self.class));
